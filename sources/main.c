@@ -113,12 +113,15 @@ int main(void){
 	}
 	printf("25Q64 Ready!\r\n");
 	
+	//SPI_Flash_Read((u8)&saveData, FLASH_SIZE-100, sizeof(SaveData));
+
 	saveData.front = 0x5a;
 	saveData.rear = 0xa5;
 	saveData.plantName = 1;
 	saveData.fanStatus = 0;
 	saveData.pumpStatus = 0;
 	saveData.lightStatus = 0;
+
 	while(1)
 	{
 		temperature = DS18B20_Read();   //读取精确温度
@@ -186,19 +189,20 @@ int main(void){
 
 			if(receiveData->getStatus == 1){
 				
+				USART3_PutData(saveData, sizeof(SaveData));
 
-				sprintf(uartBuff, "Air temperature: %d ℃ (%.2f ℃ )\r\n", wd, temperature);
-				USART3_Puts(uartBuff);    
-				sprintf(uartBuff, "Air humidity: %d %%\r\n", sd);
-				USART3_Puts(uartBuff); 
-				sprintf(uartBuff, "Soil moisture: %.2f %%, %.2f %%\r\n", soilMoisture[0], soilMoisture[1]);
-				USART3_Puts(uartBuff);
-				sprintf(uartBuff, "Light intensity: %.2f lx\r\n", lightLux);
-				USART3_Puts(uartBuff);
-				sprintf(uartBuff, "CO2: %d ppm\r\n", co2ppm);
-				USART3_Puts(uartBuff);
-				sprintf(uartBuff, "F=%d, P=%d, L=%d", saveData.fanStatus, saveData.pumpStatus, saveData.lightStatus);
-				USART3_Puts(uartBuff);
+				// sprintf(uartBuff, "Air temperature: %d ℃ (%.2f ℃ )\r\n", wd, temperature);
+				// USART3_Puts(uartBuff);    
+				// sprintf(uartBuff, "Air humidity: %d %%\r\n", sd);
+				// USART3_Puts(uartBuff); 
+				// sprintf(uartBuff, "Soil moisture: %.2f %%, %.2f %%\r\n", soilMoisture[0], soilMoisture[1]);
+				// USART3_Puts(uartBuff);
+				// sprintf(uartBuff, "Light intensity: %.2f lx\r\n", lightLux);
+				// USART3_Puts(uartBuff);
+				// sprintf(uartBuff, "CO2: %d ppm\r\n", co2ppm);
+				// USART3_Puts(uartBuff);
+				// sprintf(uartBuff, "F=%d, P=%d, L=%d", saveData.fanStatus, saveData.pumpStatus, saveData.lightStatus);
+				// USART3_Puts(uartBuff);
 
 				USART3_Puts("\r\n");
 			}
@@ -250,6 +254,8 @@ int main(void){
 		}else{
 			TIM_SetCompare4(TIM3, 0);
 		}
+
+		SPI_Flash_Write((u8*)&saveData, FLASH_SIZE-100, sizeof(SaveData));
 
 		Delay_ms(1000);
 		Delay_ms(1000);
