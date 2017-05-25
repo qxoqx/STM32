@@ -1,0 +1,180 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADC1_DR_Address	.\adc.c	4;"	d	file:
+ADC1_GPIO_Config	.\adc.c	/^static void ADC1_GPIO_Config(void)$/;"	f	file:
+ADC1_Init	.\adc.c	/^void ADC1_Init(void)$/;"	f
+ADC1_Mode_Config	.\adc.c	/^static void ADC1_Mode_Config(void)$/;"	f	file:
+ADC_ConvertedValue	.\adc.c	/^__IO uint16_t ADC_ConvertedValue;$/;"	v
+ADC_H	.\adc.h	2;"	d
+AlarmROM	.\ds18b20.h	11;"	d
+BH1750_H	.\bh1750.h	2;"	d
+BH1750_Send	.\bh1750.c	/^void BH1750_Send(u8 command)$/;"	f
+BHAddRead	.\bh1750.h	9;"	d
+BHAddWrite	.\bh1750.h	8;"	d
+BHModeH1	.\bh1750.h	13;"	d
+BHModeH2	.\bh1750.h	14;"	d
+BHModeL	.\bh1750.h	15;"	d
+BHPowDown	.\bh1750.h	10;"	d
+BHPowOn	.\bh1750.h	11;"	d
+BHReset	.\bh1750.h	12;"	d
+BHSigModeH	.\bh1750.h	16;"	d
+BHSigModeH2	.\bh1750.h	17;"	d
+BHSigModeL	.\bh1750.h	18;"	d
+BusFault_Handler	.\stm32f10x_it.c	/^void BusFault_Handler(void)$/;"	f
+CopyScratchpad	.\ds18b20.h	16;"	d
+DELAY_H	.\delay.h	2;"	d
+DH11_RCC_PORT	.\dht11.h	9;"	d
+DHT11_Check	.\dht11.c	/^u8 DHT11_Check(void)    $/;"	f
+DHT11_DQ_High	.\dht11.h	11;"	d
+DHT11_DQ_Low	.\dht11.h	12;"	d
+DHT11_IO_IN	.\dht11.c	/^void DHT11_IO_IN(void)\/\/温湿度模块输入函数$/;"	f
+DHT11_IO_OUT	.\dht11.c	/^void DHT11_IO_OUT(void)\/\/温湿度模块输出函数$/;"	f
+DHT11_Init	.\dht11.c	/^void DHT11_Init(void)$/;"	f
+DHT11_Read_Bit	.\dht11.c	/^u8 DHT11_Read_Bit(void)  $/;"	f
+DHT11_Read_Byte	.\dht11.c	/^u8 DHT11_Read_Byte(void)    $/;"	f
+DHT11_Read_Data	.\dht11.c	/^u8 DHT11_Read_Data(u8 *temp,u8 *humi)    $/;"	f
+DHT11_Rst	.\dht11.c	/^void DHT11_Rst(void)   $/;"	f
+DHT_H	.\dht11.h	2;"	d
+DS18B20Init	.\ds18b20.c	/^void DS18B20Init(unsigned char Precision,unsigned char AlarmTH,unsigned char AlarmTL)$/;"	f
+DS18B20ReadByte	.\ds18b20.c	/^unsigned char DS18B20ReadByte(void)$/;"	f
+DS18B20StartConvert	.\ds18b20.c	/^void DS18B20StartConvert(void)$/;"	f
+DS18B20WriteByte	.\ds18b20.c	/^void DS18B20WriteByte(unsigned char Dat)$/;"	f
+DS18B20_Configuration	.\ds18b20.c	/^void DS18B20_Configuration(void)$/;"	f
+DS18B20_H	.\ds18b20.h	2;"	d
+DS18B20_Init	.\ds18b20.c	/^void DS18B20_Init(void)$/;"	f
+DS18B20_Read	.\ds18b20.c	/^float DS18B20_Read(void)$/;"	f
+DS_AlarmTH	.\ds18b20.h	29;"	d
+DS_AlarmTL	.\ds18b20.h	30;"	d
+DS_CONVERT_TICK	.\ds18b20.h	31;"	d
+DS_DQIO	.\ds18b20.h	25;"	d
+DS_PORT	.\ds18b20.h	24;"	d
+DS_PRECISION	.\ds18b20.h	28;"	d
+DS_RCC_PORT	.\ds18b20.h	26;"	d
+DebugMon_Handler	.\stm32f10x_it.c	/^void DebugMon_Handler(void)$/;"	f
+Delay_ms	.\delay.h	9;"	d
+Delay_us	.\delay.c	/^void Delay_us(__IO u32 nTime)$/;"	f
+DisableINT	.\ds18b20.h	22;"	d
+EnableINT	.\ds18b20.h	21;"	d
+FLASH_H	.\flash.h	2;"	d
+FLASH_SIZE	.\main.c	26;"	d	file:
+GPIO_DHT11	.\dht11.h	8;"	d
+GetDQ	.\ds18b20.h	35;"	d
+HB1750_Init	.\bh1750.c	/^void HB1750_Init(void)$/;"	f
+HB1750_Read	.\bh1750.c	/^u16 HB1750_Read(void)$/;"	f
+HB1750_Read_Data	.\bh1750.c	/^float HB1750_Read_Data(void)$/;"	f
+HardFault_Handler	.\stm32f10x_it.c	/^void HardFault_Handler(void)$/;"	f
+I2C_H	.\i2c.h	2;"	d
+IIC_Ack	.\i2c.c	/^void IIC_Ack(void)$/;"	f
+IIC_Init	.\i2c.c	/^void IIC_Init(void)$/;"	f
+IIC_NAck	.\i2c.c	/^void IIC_NAck(void)$/;"	f
+IIC_Read_Byte	.\i2c.c	/^u8 IIC_Read_Byte(unsigned char ack)$/;"	f
+IIC_SCL_CLR	.\i2c.h	13;"	d
+IIC_SCL_SET	.\i2c.h	12;"	d
+IIC_SDA_CLR	.\i2c.h	15;"	d
+IIC_SDA_SET	.\i2c.h	14;"	d
+IIC_Send_Byte	.\i2c.c	/^void IIC_Send_Byte(u8 txd)$/;"	f
+IIC_Start	.\i2c.c	/^void IIC_Start(void)$/;"	f
+IIC_Stop	.\i2c.c	/^void IIC_Stop(void)$/;"	f
+IIC_Wait_Ack	.\i2c.c	/^u8 IIC_Wait_Ack(void)$/;"	f
+IO_DHT11	.\dht11.h	7;"	d
+KEY1	.\key.h	15;"	d
+KEY2	.\key.h	14;"	d
+KEY3	.\key.h	13;"	d
+KEY4	.\key.h	12;"	d
+KEY_H	.\key.h	2;"	d
+KEY_Init	.\key.c	/^void KEY_Init(void)$/;"	f
+KEY_Scan	.\key.c	/^uint8_t KEY_Scan(uint8_t mode)$/;"	f
+LED2_OFF	.\led.h	6;"	d
+LED2_ON	.\led.h	7;"	d
+LED2_REV	.\led.h	8;"	d
+LED3_OFF	.\led.h	10;"	d
+LED3_ON	.\led.h	11;"	d
+LED3_REV	.\led.h	12;"	d
+LED_H	.\led.h	2;"	d
+Led_Init	.\led.c	/^void Led_Init(void){$/;"	f
+MatchROM	.\ds18b20.h	10;"	d
+MemManage_Handler	.\stm32f10x_it.c	/^void MemManage_Handler(void)$/;"	f
+NMI_Handler	.\stm32f10x_it.c	/^void NMI_Handler(void)$/;"	f
+PUTCHAR_PROTOTYPE	.\uart.c	7;"	d	file:
+PUTCHAR_PROTOTYPE	.\uart.c	9;"	d	file:
+PendSV_Handler	.\stm32f10x_it.c	/^void PendSV_Handler(void)$/;"	f
+READ_SDA	.\i2c.h	16;"	d
+ReadPower	.\ds18b20.h	18;"	d
+ReadROM	.\ds18b20.h	9;"	d
+ReadRom	.\ds18b20.c	/^void ReadRom(unsigned char *Read_Addr)$/;"	f
+ReadScratchpad	.\ds18b20.h	14;"	d
+RecallEEPROM	.\ds18b20.h	17;"	d
+ResetDQ	.\ds18b20.h	33;"	d
+ResetDS18B20	.\ds18b20.c	/^unsigned char ResetDS18B20(void)$/;"	f
+S1	.\key.h	7;"	d
+S2	.\key.h	8;"	d
+S3	.\key.h	9;"	d
+S4	.\key.h	10;"	d
+SDA_IN	.\i2c.h	8;"	d
+SDA_OUT	.\i2c.h	9;"	d
+SIZE	.\main.c	27;"	d	file:
+SPI2_Init	.\spi.c	/^void SPI2_Init(void)$/;"	f
+SPI2_ReadWriteByte	.\spi.c	/^u8 SPI2_ReadWriteByte(u8 TxData)$/;"	f
+SPI2_SetSpeed	.\spi.c	/^void SPI2_SetSpeed(u8 SPI_BaudRatePrescaler)$/;"	f
+SPI_FLASH_BUF	.\flash.c	/^u8 SPI_FLASH_BUF[4096];$/;"	v
+SPI_FLASH_CS	.\flash.h	19;"	d
+SPI_FLASH_CS_CLR	.\flash.h	21;"	d
+SPI_FLASH_CS_SET	.\flash.h	20;"	d
+SPI_FLASH_TYPE	.\flash.c	/^u16 SPI_FLASH_TYPE = W25Q64;\/\/默认就是25Q64$/;"	v
+SPI_FLASH_Write_Disable	.\flash.c	/^void SPI_FLASH_Write_Disable(void)   $/;"	f
+SPI_FLASH_Write_Enable	.\flash.c	/^void SPI_FLASH_Write_Enable(void)   $/;"	f
+SPI_FLASH_Write_SR	.\flash.c	/^void SPI_FLASH_Write_SR(u8 sr)   $/;"	f
+SPI_Flash_Erase_Chip	.\flash.c	/^void SPI_Flash_Erase_Chip(void)   $/;"	f
+SPI_Flash_Erase_Sector	.\flash.c	/^void SPI_Flash_Erase_Sector(u32 Dst_Addr)   $/;"	f
+SPI_Flash_Init	.\flash.c	/^void SPI_Flash_Init(void)$/;"	f
+SPI_Flash_PowerDown	.\flash.c	/^void SPI_Flash_PowerDown(void)   $/;"	f
+SPI_Flash_Read	.\flash.c	/^void SPI_Flash_Read(u8* pBuffer,u32 ReadAddr,u16 NumByteToRead)   $/;"	f
+SPI_Flash_ReadID	.\flash.c	/^u16 SPI_Flash_ReadID(void)$/;"	f
+SPI_Flash_ReadSR	.\flash.c	/^u8 SPI_Flash_ReadSR(void)   $/;"	f
+SPI_Flash_WAKEUP	.\flash.c	/^void SPI_Flash_WAKEUP(void)   $/;"	f
+SPI_Flash_Wait_Busy	.\flash.c	/^void SPI_Flash_Wait_Busy(void)   $/;"	f
+SPI_Flash_Write	.\flash.c	/^void SPI_Flash_Write(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)   $/;"	f
+SPI_Flash_Write_NoCheck	.\flash.c	/^void SPI_Flash_Write_NoCheck(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)   $/;"	f
+SPI_Flash_Write_Page	.\flash.c	/^void SPI_Flash_Write_Page(u8* pBuffer,u32 WriteAddr,u16 NumByteToWrite)$/;"	f
+SPI_H	.\spi.h	2;"	d
+SVC_Handler	.\stm32f10x_it.c	/^void SVC_Handler(void)$/;"	f
+SearchROM	.\ds18b20.h	8;"	d
+SetDQ	.\ds18b20.h	34;"	d
+SkipROM	.\ds18b20.h	7;"	d
+StartConvert	.\ds18b20.h	13;"	d
+SysTick_Handler	.\stm32f10x_it.c	/^void SysTick_Handler(void)$/;"	f
+SysTick_Init	.\delay.c	/^void SysTick_Init(void)$/;"	f
+TEXT_Buffer	.\main.c	/^const u8 TEXT_Buffer[]={"STM32 SPI TEST"};$/;"	v
+TimingDelay	.\delay.c	/^static __IO u32 TimingDelay;$/;"	v	file:
+TimingDelay_Decrement	.\delay.c	/^void TimingDelay_Decrement(void)$/;"	f
+UART_H	.\uart.h	2;"	d
+USART1_IRQHandler	.\uart.c	/^void USART1_IRQHandler(void)  $/;"	f
+Uart1_Init	.\uart.c	/^void Uart1_Init(void){$/;"	f
+UsageFault_Handler	.\stm32f10x_it.c	/^void UsageFault_Handler(void)$/;"	f
+W25Q16	.\flash.h	13;"	d
+W25Q32	.\flash.h	14;"	d
+W25Q64	.\flash.h	15;"	d
+W25Q80	.\flash.h	12;"	d
+W25X_BlockErase	.\flash.h	34;"	d
+W25X_ChipErase	.\flash.h	36;"	d
+W25X_DeviceID	.\flash.h	39;"	d
+W25X_FastReadData	.\flash.h	31;"	d
+W25X_FastReadDual	.\flash.h	32;"	d
+W25X_JedecDeviceID	.\flash.h	41;"	d
+W25X_ManufactDeviceID	.\flash.h	40;"	d
+W25X_PageProgram	.\flash.h	33;"	d
+W25X_PowerDown	.\flash.h	37;"	d
+W25X_ReadData	.\flash.h	30;"	d
+W25X_ReadStatusReg	.\flash.h	28;"	d
+W25X_ReleasePowerDown	.\flash.h	38;"	d
+W25X_SectorErase	.\flash.h	35;"	d
+W25X_WriteDisable	.\flash.h	27;"	d
+W25X_WriteEnable	.\flash.h	26;"	d
+W25X_WriteStatusReg	.\flash.h	29;"	d
+WriteScratchpad	.\ds18b20.h	15;"	d
+__STM32F10x_IT_H	.\stm32f10x_it.h	24;"	d
+main	.\main.c	/^int main(void){$/;"	f
