@@ -2,9 +2,9 @@
 #ifdef PWM_H
 
 u16 CCR1 = 0;          
-u16 CCR2 = 2000;  
+u16 CCR2 = 0;  
 u16 CCR3 = 0;
-u16 CCR4 = 2200;
+u16 CCR4 = 0;
 
 void GPIO_Config(void)  
 {

@@ -31,11 +31,13 @@ typedef struct
 	u8 fanStatus;			//风扇状态
 	u8 pumpStatus;			//水泵状态
 	u8 lightStatus;			//灯光状态
+	u8 nop0[3];
 	int airHumidity;		//空气湿度
-	float temp;				//空气温度
-	float soilMoisture;		//土壤湿度
-	float lightLux;			//光照强度
+	int temp;				//空气温度
+	int soilMoisture;		//土壤湿度
+	int lightLux;			//光照强度
 	int co2ppm;				//CO2浓度
+	u8 nop1[3];
 	u8 rear;					//空
 }SaveData;
 
@@ -77,7 +79,7 @@ int main(void){
 	u16 co2ppm;
 	u8 wd=0;
 	u8 sd=0;
-	saveData.plantName = 1;
+
 
 
 	SysTick_Init();
@@ -113,14 +115,17 @@ int main(void){
 	}
 	printf("25Q64 Ready!\r\n");
 	
-	//SPI_Flash_Read((u8)&saveData, FLASH_SIZE-100, sizeof(SaveData));
-
-	saveData.front = 0x5a;
-	saveData.rear = 0xa5;
-	saveData.plantName = 1;
-	saveData.fanStatus = 0;
-	saveData.pumpStatus = 0;
-	saveData.lightStatus = 0;
+	SPI_Flash_Read((u8)&saveData, FLASH_SIZE-100, sizeof(SaveData));
+	if(saveData.plantName > 6)
+	{
+		saveData.plantName = 1;
+	}
+		saveData.front = 0x5a;
+		saveData.rear = 0xfe;
+		saveData.fanStatus = 0;
+		saveData.pumpStatus = 0;
+		saveData.lightStatus = 0;
+	//SPI_Flash_Read((u8*)&saveData, FLASH_SIZE-100, sizeof(SaveData));
 
 	while(1)
 	{
@@ -130,23 +135,22 @@ int main(void){
 		lightLux = HB1750_Read_Data();		//读取光照强度
 		co2ppm = Co2_Read();
 
-		saveData.temp = temperature;
+		saveData.temp = (int)(temperature * 100);
 		saveData.airHumidity = sd;
 		//saveData.soilMoisture = (soilMoisture[0] + soilMoisture[0] + soilMoisture[0]) / 3;
-		saveData.soilMoisture = (soilMoisture[0] + soilMoisture[1]) / 2;
-		saveData.lightLux = lightLux;
+		saveData.soilMoisture = (int)((soilMoisture[0] + soilMoisture[1]) / 2 * 100);
+		saveData.lightLux = (int)(lightLux * 100);
 		saveData.co2ppm = co2ppm;
 		//sprintf(uartBuff, "%f %d %f %f %d", saveData.temp, saveData.airHumidity, saveData.soilMoisture, saveData.lightLux, saveData.co2ppm);
 		//USART1_Puts(uartBuff);
 		//USART3_PutData((char*)&saveData, 20);  
 
-		if(Uart3Sta == 1 && Uart3Cnt == 6)
+		if(Uart3Sta == 1)
 		{
-			
 			memset(Uart3Buff, 0, 64);
 			memcpy(Uart3Buff, (char*)&Uart3Buffer[Uart3Front + 1], Uart3Cnt);
 			
-			receiveData = (ReceiveData *)9;
+			receiveData = (ReceiveData *)Uart3Buff;
 			if(receiveData->isChangePlant == 1){
 				saveData.plantName = receiveData->plantName;
 			}
@@ -168,7 +172,7 @@ int main(void){
 				saveData.pumpStatus = 0;
 				controlData.pumplock = 0;
 				controlData.pumpcnt = 0;
-			}else if(receiveData->pumpControl == 1 && controlData.pumplock == 0 && saveData.soilMoisture < 60)
+			}else if(receiveData->pumpControl == 1 && controlData.pumplock == 0 && saveData.soilMoisture / 100 < 60)
 			{
 				saveData.pumpStatus = 1;
 				controlData.pumplock = 1;
@@ -189,7 +193,20 @@ int main(void){
 
 			if(receiveData->getStatus == 1){
 				
-				USART3_PutData(saveData, sizeof(SaveData));
+				USART3_PutData((char *)&saveData, sizeof(SaveData));
+				// sprintf(uartBuff, "Air temperature: %.2f ℃\r\n", saveData.temp / 100.0);
+				// USART3_Puts(uartBuff);    
+				// sprintf(uartBuff, "Air humidity: %d %%\r\n", saveData.airHumidity);
+				// USART3_Puts(uartBuff); 
+				// sprintf(uartBuff, "Soil moisture: %.2f %%\r\n", saveData.soilMoisture / 100.0);
+				// USART3_Puts(uartBuff);
+				// sprintf(uartBuff, "Light intensity: %.2f lx\r\n", saveData.lightLux / 100.0);
+				// USART3_Puts(uartBuff);
+				// sprintf(uartBuff, "CO2: %d ppm\r\n", co2ppm);
+				// USART3_Puts(uartBuff);
+				// sprintf(uartBuff, "Plant=%d, F=%d, P=%d, L=%d", saveData.plantName ,saveData.fanStatus, saveData.pumpStatus, saveData.lightStatus);
+				// USART3_Puts(uartBuff);
+
 
 				// sprintf(uartBuff, "Air temperature: %d ℃ (%.2f ℃ )\r\n", wd, temperature);
 				// USART3_Puts(uartBuff);    
@@ -201,10 +218,10 @@ int main(void){
 				// USART3_Puts(uartBuff);
 				// sprintf(uartBuff, "CO2: %d ppm\r\n", co2ppm);
 				// USART3_Puts(uartBuff);
-				// sprintf(uartBuff, "F=%d, P=%d, L=%d", saveData.fanStatus, saveData.pumpStatus, saveData.lightStatus);
+				// sprintf(uartBuff, "Plant=%d, F=%d, P=%d, L=%d", saveData.plantName ,saveData.fanStatus, saveData.pumpStatus, saveData.lightStatus);
 				// USART3_Puts(uartBuff);
 
-				USART3_Puts("\r\n");
+				//USART3_Puts("\r\n");
 			}
 			
 			Uart3Front = 0;
@@ -214,7 +231,7 @@ int main(void){
 		if(controlData.fanlock)
 		{
 			controlData.fancnt++;
-			if(controlData.fancnt > 30)
+			if(controlData.fancnt > 5)
 			{
 				controlData.fancnt	= 0;
 				controlData.fanlock = 0;
@@ -234,7 +251,7 @@ int main(void){
 		if(controlData.lightlock)
 		{
 			controlData.lightcnt++;
-			if(controlData.lightcnt > 250)
+			if(controlData.lightcnt > 30)
 			{
 				controlData.lightcnt = 0;
 				controlData.lightlock = 0;
@@ -244,15 +261,15 @@ int main(void){
 
 		if(saveData.fanStatus == 1)
 		{
-			TIM_SetCompare2(TIM3, 2250);
+			TIM_SetCompare4(TIM3, 2380);
 		}else{
-			TIM_SetCompare2(TIM3, 0);
+			TIM_SetCompare4(TIM3, 0);
 		}
 		if(saveData.pumpStatus == 1)
 		{
-			TIM_SetCompare4(TIM3, 2000);
+			TIM_SetCompare2(TIM3, 2000);
 		}else{
-			TIM_SetCompare4(TIM3, 0);
+			TIM_SetCompare2(TIM3, 0);
 		}
 
 		SPI_Flash_Write((u8*)&saveData, FLASH_SIZE-100, sizeof(SaveData));
