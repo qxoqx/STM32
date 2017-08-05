@@ -18,7 +18,7 @@ u16 HB1750_Read(void)
 	u16 buf = 0;
 
 	IIC_Start();
-	IIC_Send_Byte(BHAddRead);
+	IIC_Send_Byte(BHAddRead);	//从机地址+最后读方向位
 	while(IIC_Wait_Ack());
 	buf = IIC_Read_Byte(1);
 	buf = buf << 8;
@@ -30,9 +30,9 @@ u16 HB1750_Read(void)
 
 void BH1750_Start(void)
 {
-	BH1750_Send(BHPowOn);
-	BH1750_Send(BHReset);
-	BH1750_Send(BHSigModeH);
+	BH1750_Send(BHPowOn);	//打开模块等待测量指令
+	BH1750_Send(BHReset);	//重置数据寄存器值在PowerOn模式下有效
+	BH1750_Send(BHSigModeH);//一次高分辨率 测量 测量后模块转到 PowerDown模式
 }
 
 float HB1750_Read_Data(void)
